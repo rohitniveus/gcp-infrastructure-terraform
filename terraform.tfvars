@@ -1,13 +1,13 @@
-projectid = "f4yiee-407411"
+projectid = "f4yiee"
 service = "compute.googleapis.com"
 disable_on_destroy = false
-clustername = "gkeclusterprod"
+clustername = "gkecluster"
 routing_mode = "REGIONAL"
 auto_create_subnetworks = false
 mtu = 1460
 delete_default_routes_on_create = false
 ip_cidr_range = "10.0.0.0/18"
-region = "europe-north1"
+region = "us-central1"
 private_ip_google_access = true
 source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
 nat_ip_allocate_option = "MANUAL_ONLY"

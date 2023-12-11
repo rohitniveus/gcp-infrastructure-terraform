@@ -30,11 +30,7 @@ resource "google_compute_subnetwork" "private" {
   network                  = google_compute_network.main.self_link
   private_ip_google_access = var.private_ip_google_access
   project                  = var.projectid
-  log_config {
-    aggregation_interval = "INTERVAL_10_MIN"
-    flow_sampling        = 0.5
-    metadata             = "INCLUDE_ALL_METADATA"
-  }
+
   secondary_ip_range {
     range_name    = "k8s-pod-range"
     ip_cidr_range = "10.48.0.0/14"

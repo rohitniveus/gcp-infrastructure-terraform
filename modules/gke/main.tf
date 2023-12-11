@@ -10,29 +10,12 @@ resource "google_container_cluster" "primary" {
   logging_service          = var.logging_service
   monitoring_service       = var.monitoring_service
   networking_mode          = var.networking_mode
-  enable_binary_authorization = true
-
-  master_authorized_networks_config {
-
-  }
-  network_policy {
-    enabled = true
-  }
-  master_auth {
-    client_certificate_config {
-      issue_client_certificate = false
-    }
-  }
-  
-  
-  
 
   # Optional, if you want multi-zonal cluster
   #node_locations = [
   #  "${var.region}-b"
   #]
 
-    
   addons_config {
     http_load_balancing {
       disabled = true
@@ -64,9 +47,6 @@ resource "google_container_cluster" "primary" {
   node_config {
     workload_metadata_config {
       mode = var.mode
-    }
-    shielded_instance_config {
-      enable_secure_boot = false
     }
   }
 

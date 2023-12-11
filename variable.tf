@@ -39,7 +39,6 @@ variable "private_ip_google_access" {
     type = bool
   
 }
-
 variable "source_subnetwork_ip_ranges_to_nat" {
     description = "source_subnetwork_ip_ranges_to_nat"
     type = string

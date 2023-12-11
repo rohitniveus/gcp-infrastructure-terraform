@@ -1,5 +1,5 @@
 module "vpc" {
-    source = "./modules/vpc"
+    source = "../../modules/vpc"
     region = var.region
     clustername = var.clustername
     source_ip_ranges_to_nat = var.source_ip_ranges_to_nat
@@ -27,7 +27,7 @@ module "vpc" {
 
 }
 module "gke" {
-    source = "./modules/gke"
+    source = "../../modules/gke"
     network      = module.vpc.vpc_self_link
     subnetwork   = module.vpc.subnet_self_link
     machinetype = var.machinetype
