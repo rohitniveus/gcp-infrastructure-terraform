@@ -73,19 +73,13 @@ pipeline {
                 }
             }
         }
-        stage('destroy') {
-            steps {
-                // Only apply if no high vulnerabilities were found
-                script {
-                    // if (!highVulnerabilities) {
-                    //     sh 'terraform apply -auto-approve'
-                    // } else {
-                    //     echo "Skipping Terraform apply due to high vulnerabilities."
-                    // }
-                    sh 'terraform destroy -auto-approve'
-                }
-            }
-        }
+        // stage('destroy') {
+        //     steps {
+        //         script {
+        //             sh 'terraform destroy -auto-approve'
+        //         }
+        //     }
+        // }
     }
 
 
