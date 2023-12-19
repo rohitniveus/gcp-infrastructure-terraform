@@ -39,26 +39,26 @@ pipeline {
             }
         }
         
-        stage('Trivy scan ') {
-            steps {
-                sh 'sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > html.tpl'
-                sh 'sudo mkdir -p reports'
-                sh 'sudo terraform plan --out tfplan.binary'
-                sh 'sudo terraform show -json tfplan.binary > tfplan.json'
-                sh 'sudo trivy config ./tfplan.json --format template --template @./html.tpl -o reports/trivy-report.html '
-                sh 'trivy fs . > trivyfs.txt'
+        // stage('Trivy scan ') {
+        //     steps {
+        //         sh 'sudo curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl > html.tpl'
+        //         sh 'sudo mkdir -p reports'
+        //         sh 'sudo terraform plan --out tfplan.binary'
+        //         sh 'sudo terraform show -json tfplan.binary > tfplan.json'
+        //         sh 'sudo trivy config ./tfplan.json --format template --template @./html.tpl -o reports/trivy-report.html '
+        //         sh 'trivy fs . > trivyfs.txt'
         
-                publishHTML target : [
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'reports',
-                    reportFiles: 'trivy-report.html',
-                    reportName: 'Trivy Scan',
-                    reportTitles: 'Trivy Scan'
-                ]
-            }
-        }
+        //         publishHTML target : [
+        //             allowMissing: true,
+        //             alwaysLinkToLastBuild: true,
+        //             keepAll: true,
+        //             reportDir: 'reports',
+        //             reportFiles: 'trivy-report.html',
+        //             reportName: 'Trivy Scan',
+        //             reportTitles: 'Trivy Scan'
+        //         ]
+        //     }
+        // }
 
         stage('Plan') {
             steps {
