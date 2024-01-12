@@ -28,6 +28,8 @@ resource "google_container_cluster" "primary" {
   release_channel {
     channel = var.channel
   }
+  master_authorized_networks_config {
+    cidr_blocks = ["0.0.0.0/0"]
 
   workload_identity_config {
     workload_pool = "${var.projectid}.svc.id.goog"
